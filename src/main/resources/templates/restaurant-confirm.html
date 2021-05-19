@@ -1,0 +1,28 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="POST" action="/prefectures">
+		<table class="sample-table" th:each="item : ${restaurantList}"
+			th:object="${item}">
+			<tr>
+				<th>shopID</th>
+				<td th:text="*{id}"></td>
+			</tr>
+			<tr>
+				<th>店名</th>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<th>お気に入り</th>
+				<td><input type="checkbox" name="q1" value="お気に入り"></input></td>
+			</tr>
+
+		</table>
+		<input type="submit" value="送信" size="30"></input>
+	</form>
+</body>
+</html>

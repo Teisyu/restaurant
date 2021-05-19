@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>submit</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<link rel="stylesheet" th:href="@{/styles/index.css}">
+<style type="text/css">
+    /* Optional: Makes the sample page fill the window. */  
+      html,       body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.map-wrapper {
+	width: 800px;
+	height: 800px;
+}
+</style>
+</head>
+<body>
+
+	<div class="content-wrapper">
+		<h1>グルメ検索機能</h1>
+
+		<form method="post" action="/restaurant-confirm"
+			class="search-form">
+			<div class="input-area">
+				<div class="input-unit">
+					<div class="title">緯度</div>
+					<input type="text" class="text" name="ido"></input>
+				</div>
+				<div class="input-unit">
+					<div class="title">経度</div>
+					<input type="text" class="text" name="keido"></input>
+				</div>
+				<div class="input-unit">
+					<div class="title">半径</div>
+					<input type="text" class="text" name="hankei"></input>
+<!-- 					<select name=”hankei”>
+						<option value=”1”>300m</option>
+						<option value=”2”>500m</option>
+						<option value=”3”>1000m</option>
+						<option value=”4”>2000m</option>
+						<option value=”5”>3000m</option>
+					</select> -->
+				</div>
+			</div>
+			<input type="submit" class="submit-button" value="送信">
+		</form>
+		<!-- マップの表示 -->
+		<div class="map-wrapper">
+			<div id="map" style="width: 100%; height: 100%;"></div>
+		</div>
+	</div>
+	<script>
+		    let map;
+		function initMap() {
+			map = new google.maps.Map(document.getElementById("map"), {
+				center : {
+					lat : 35.4122,
+					lng : 139.4130
+				},
+				zoom : 18,
+			});
+		}
+ 
+	</script>
+	 
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=XXXXXXX&callback=initMap&libraries=&v=weekly">
+</script>
+</body>
+</html>
